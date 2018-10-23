@@ -125,6 +125,7 @@ public class SimpleMindMapPart extends AbstractSimpleMindMapPart {
 	@Override
 	@PostConstruct
 	public void postConstruct(Composite parent) {
+
 		super.postConstruct(parent);
 
 		final IViewer viewer = getContentViewer();

@@ -31,7 +31,6 @@ public class CreateNewNodeOnClickHandler extends AbstractHandler implements IOnC
 		if (!e.isPrimaryButtonDown()) {
 			return; // wrong mouse button
 		}
-		Thread.dumpStack();
 
 		IViewer viewer = getHost().getRoot().getViewer();
 		ItemCreationModel creationModel = viewer.getAdapter(ItemCreationModel.class);

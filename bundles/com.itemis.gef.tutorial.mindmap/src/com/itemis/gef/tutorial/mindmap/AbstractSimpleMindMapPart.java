@@ -13,7 +13,6 @@ import com.google.inject.Injector;
 import com.itemis.gef.tutorial.mindmap.lifecycle.Manager;
 
 import javafx.embed.swt.FXCanvas;
-import javafx.scene.Scene;
 
 public class AbstractSimpleMindMapPart {
 	@Inject
@@ -59,6 +58,9 @@ public class AbstractSimpleMindMapPart {
 	public void dispose() {
 		// deactivate domain
 		deactivate();
+
+		// unhook selection forwarder
+		unhookViewers();
 
 		domain.dispose();
 		domain = null;
@@ -110,7 +112,7 @@ public class AbstractSimpleMindMapPart {
 	protected void hookViewers() {
 		// by default we only have a single (content) viewer, so hook its
 		// visuals as root visuals into the scene
-		fxCanvas.setScene(new Scene(getContentViewer().getCanvas()));
+		// fxCanvas.setScene(new Scene(getContentViewer().getCanvas()));
 	}
 
 	/**
@@ -123,11 +125,15 @@ public class AbstractSimpleMindMapPart {
 		// create viewer and canvas only after toolkit has been initialized
 		fxCanvas = createCanvas(parent);
 
-		// hook viewer controls and selection forwarder
-		hookViewers();
+		// // hook viewer controls and selection forwarder
+		// hookViewers();
+		//
+		// // activate domain
+		// activate();
+	}
 
-		// activate domain
-		activate();
+	protected void unhookViewers() {
+		// TODO: What about taking the visuals out of the canvas?
 	}
 
 }
